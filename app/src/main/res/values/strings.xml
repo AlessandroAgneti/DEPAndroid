@@ -4,4 +4,10 @@
     <string name="password">Password</string>
     <string name="email">Email</string>
     <string name="register">Register</string>
+    <string name="error_dimension_pass">Password must be more than six character!</string>
+    <string name="email_failed">Email Failed</string>
+    <string name="show_password">Show Password</string>
+    <string name="operation_success">success</string>
+    <string name="operation_fail">failed</string>
+
 </resources>
