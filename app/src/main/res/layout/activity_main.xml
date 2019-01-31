@@ -1,87 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ui.activities.MainActivity">
 
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/id_email"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:boxStrokeColor="@color/colorPrimary"
-        app:errorEnabled="true">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/id_text_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:hint="@string/email" />
-    </android.support.design.widget.TextInputLayout>
-
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/id_password"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        app:boxStrokeColor="@color/colorPrimary"
-        app:errorEnabled="true">
-
-        <android.support.design.widget.TextInputEditText
-            android:id="@+id/id_text_password"
-            android:layout_width="match_parent"
-            android:inputType="textPassword"
-            android:layout_height="wrap_content"
-            android:hint="@string/password" />
-
-        <CheckBox
-            android:id="@+id/visualizzaPass"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/show_password" />
-
-
-    </android.support.design.widget.TextInputLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/id_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:background="@drawable/button"
-            android:fontFamily="medium"
-            android:text="@string/login"
-            android:textColor="@color/colorWhite" />
-
-        <Button
-            android:id="@+id/id_register"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:background="@drawable/button"
-            android:fontFamily="medium"
-            android:text="@string/register"
-            android:textColor="@color/colorWhite" />
-    </LinearLayout>
 
 </LinearLayout>

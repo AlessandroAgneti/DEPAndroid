@@ -9,5 +9,9 @@
     <string name="show_password">Show Password</string>
     <string name="operation_success">success</string>
     <string name="operation_fail">failed</string>
+    <string name="number_phone_registration">Numero di telefono</string>
+    <string name="registrazione">Registrazione</string>
+    <string name="login_menu">Login</string>
+    <string name="checkout">Checkout</string>
 
 </resources>

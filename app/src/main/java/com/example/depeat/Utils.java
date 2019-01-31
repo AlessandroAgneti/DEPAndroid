@@ -2,24 +2,21 @@ package com.example.depeat;
 
 import android.content.Context;
 import android.support.annotation.StringRes;
-import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
-
-import com.example.depeat.R;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class Utilities {
+public class Utils {
 
-    public static boolean isValidEmail(String email){
-        String expression = "^[\\w\\.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
+    private static boolean isValidEmail(String email){
+        String expression = "^[\\w.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
         Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
 
-    public static boolean isValidPassword(String password){
+    private static boolean isValidPassword(String password){
         if(password.length() > 6){
             return true;
         }else{
