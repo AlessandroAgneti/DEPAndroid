@@ -1,6 +1,7 @@
 
 package com.example.depeat.ui.activities;
 
+        import android.content.Intent;
         import android.support.v7.app.AppCompatActivity;
         import android.os.Bundle;
         import android.text.method.HideReturnsTransformationMethod;
@@ -47,6 +48,14 @@ public class LoginActivity extends AppCompatActivity {
                 }else{
                     Utils.showToast(LoginActivity.this, R.string.operation_fail);
                 }
+            }
+        });
+
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+
             }
         });
 

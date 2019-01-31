@@ -20,6 +20,7 @@
         <activity android:name=".ui.activities.LoginActivity"></activity>
         <activity android:name=".ui.activities.CheckoutActivity"></activity>
         <activity android:name=".ui.activities.ShopActivity"></activity>
+        <activity android:name=".ui.activities.RegisterActivity"></activity>
     </application>
 
 </manifest>

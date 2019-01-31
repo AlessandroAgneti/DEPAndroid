@@ -13,5 +13,7 @@
     <string name="registrazione">Registrazione</string>
     <string name="login_menu">Login</string>
     <string name="checkout">Checkout</string>
+    <string name="registration_success">Registration success</string>
+    <string name="numberphone_error">Insert a valid number phone</string>
 
 </resources>

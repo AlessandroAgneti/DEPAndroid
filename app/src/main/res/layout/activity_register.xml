@@ -60,8 +60,15 @@
             android:id="@+id/id_text_password_registration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
+            android:inputType="textPassword"
             android:hint="@string/password" />
+
+        <CheckBox
+            android:id="@+id/visualizzaPassRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/show_password" />
+
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -80,7 +87,7 @@
             android:id="@+id/id_text_numberphone_registration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
+            android:inputType="phone"
             android:hint="@string/number_phone_registration" />
     </android.support.design.widget.TextInputLayout>
 
@@ -93,6 +100,7 @@
             android:id="@+id/register_registration"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="8dp"
             android:text="@string/register"
             android:background="@drawable/button"
             android:textColor="@color/colorWhite"
