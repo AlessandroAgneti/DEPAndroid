@@ -41,6 +41,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textEmailAddress"
+            android:drawableStart="@drawable/ic_email_black_24dp"
+            android:drawablePadding="10dp"
             android:hint="@string/email" />
     </android.support.design.widget.TextInputLayout>
 
@@ -52,6 +54,9 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="8dp"
+        app:passwordToggleEnabled="true"
+        app:passwordToggleDrawable = "@drawable/show_password_selector"
+        app:passwordToggleTint="@color/colorGrey"
         android:layout_marginBottom="8dp"
         app:boxStrokeColor="@color/colorPrimary"
         app:errorEnabled="true">
@@ -62,12 +67,6 @@
             android:layout_height="wrap_content"
             android:inputType="textPassword"
             android:hint="@string/password" />
-
-        <CheckBox
-            android:id="@+id/visualizzaPassRegister"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/show_password" />
 
     </android.support.design.widget.TextInputLayout>
 
@@ -88,6 +87,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="phone"
+            android:drawableStart="@drawable/ic_phone_android_black_24dp"
+            android:drawablePadding="10dp"
             android:hint="@string/number_phone_registration" />
     </android.support.design.widget.TextInputLayout>
 

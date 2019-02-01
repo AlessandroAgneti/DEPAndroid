@@ -19,7 +19,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText edtPassword, edtemail;
     private Button loginBtn, registerBtn;
-    private CheckBox checkbox;
     private final static int MIN_DIMENSION_PASSWORD = 6;
     private String email;
     private String password;
@@ -32,7 +31,6 @@ public class LoginActivity extends AppCompatActivity {
         edtemail = findViewById(R.id.id_text_email);
         loginBtn = findViewById(R.id.id_login);
         registerBtn = findViewById(R.id.id_register);
-        checkbox = findViewById(R.id.visualizzaPass);
 
 
 
@@ -58,25 +56,6 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-
-        checkbox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(!isChecked){
-                    //show password
-                    edtPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-
-                }else{
-                    //Hide password
-                    edtPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-
-                }
-            }
-        });
-
-
-
-
 
     }
 
