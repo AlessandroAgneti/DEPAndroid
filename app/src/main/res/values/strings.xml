@@ -3,7 +3,7 @@
     <string name="login">Login</string>
     <string name="password">Password</string>
     <string name="email">Email</string>
-    <string name="register">Register</string>
+    <string name="register">Sign in</string>
     <string name="error_dimension_pass">Password must be more than six character!</string>
     <string name="email_failed">Email Failed</string>
     <string name="show_password">Show Password</string>
@@ -15,5 +15,7 @@
     <string name="checkout">Checkout</string>
     <string name="registration_success">Registration success</string>
     <string name="numberphone_error">Insert a valid number phone</string>
-
+    <string name="forgot_password">Forgot password?</string>
+    <string name="create_account">Create account</string>
+    <string name="my_account">My Account</string>
 </resources>

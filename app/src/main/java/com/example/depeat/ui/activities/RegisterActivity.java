@@ -8,6 +8,7 @@ import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -28,12 +29,12 @@ public class RegisterActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        RegisterActivity.this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_register);
         email_registration = findViewById(R.id.id_text_email_registration);
         password_registration = findViewById(R.id.id_text_password_registration);
         numberphone_registration = findViewById(R.id.id_text_numberphone_registration);
         register_registration = findViewById(R.id.register_registration);
-        checkBox = findViewById(R.id.visualizzaPassRegister);
 
         TextWatcher textWatcher = new TextWatcher() {
             @Override
@@ -58,28 +59,6 @@ public class RegisterActivity extends AppCompatActivity {
         password_registration.addTextChangedListener(textWatcher);
         numberphone_registration.addTextChangedListener(textWatcher);
 
-
-        register_registration.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
-
-            }
-        });
-        checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                if(!isChecked){
-                    //show password
-                    password_registration.setTransformationMethod(PasswordTransformationMethod.getInstance());
-
-                }else{
-                    //Hide password
-                    password_registration.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-
-                }
-            }
-        });
 
 
 
