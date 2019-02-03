@@ -38,9 +38,7 @@ public class LoginActivity extends AppCompatActivity {
         loginBtn = findViewById(R.id.id_login);
         registerBtn = findViewById(R.id.id_register);
 
-        View v;
-        v = findViewById(R.id.framelayout);
-        v.bringToFront();
+
 
 
 

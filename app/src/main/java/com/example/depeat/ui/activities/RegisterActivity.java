@@ -23,13 +23,15 @@ public class RegisterActivity extends AppCompatActivity {
     private final static int MIN_DIMENSION_PASSWORD = 6;
     private EditText email_registration, password_registration, numberphone_registration;
     private Button register_registration;
-    private CheckBox checkBox;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         RegisterActivity.this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        View decorView = getWindow().getDecorView();
+        int uiOptions = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION;
+        decorView.setSystemUiVisibility(uiOptions);
         setContentView(R.layout.activity_register);
         email_registration = findViewById(R.id.id_text_email_registration);
         password_registration = findViewById(R.id.id_text_password_registration);
