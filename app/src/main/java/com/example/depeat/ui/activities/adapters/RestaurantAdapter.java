@@ -18,6 +18,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter {
 
     private LayoutInflater inflater;
     private ArrayList<Restaurant> data;
+    private Context context;
 
     public RestaurantAdapter(Context context, ArrayList<Restaurant> data){
         inflater = LayoutInflater.from(context);
