@@ -18,4 +18,5 @@
     <string name="forgot_password">Forgot password?</string>
     <string name="create_account">Create account</string>
     <string name="my_account">My Account</string>
+    <string name="menu">MENU</string>
 </resources>

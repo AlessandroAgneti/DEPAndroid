@@ -6,11 +6,20 @@ public class Restaurant {
     private String indirizzo;
     private float minimoOrdine;
 
-    public Restaurant(int imageId, String nome, String indirizzo, float minimoOrdine){
+
+    private String desc_complete;
+
+    public Restaurant(int imageId, String nome, String indirizzo, float minimoOrdine, String desc_complete){
         this.imageId = imageId;
         this.indirizzo = indirizzo;
         this.nome = nome;
         this.minimoOrdine = minimoOrdine;
+        this.desc_complete = desc_complete;
+    }
+
+
+    public void setDesc_complete(String desc_complete) {
+        this.desc_complete = desc_complete;
     }
 
     public void setImageId(int imageId) {
@@ -29,6 +38,9 @@ public class Restaurant {
         this.minimoOrdine = minimoOrdine;
     }
 
+    public String getDesc_complete() {
+        return desc_complete;
+    }
 
     public int getImageId() {
         return imageId;

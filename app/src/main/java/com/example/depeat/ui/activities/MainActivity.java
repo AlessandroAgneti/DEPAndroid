@@ -1,6 +1,5 @@
 package com.example.depeat.ui.activities;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -12,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
 import android.view.WindowManager;
 
 import com.example.depeat.R;
@@ -55,13 +53,13 @@ public class MainActivity extends AppCompatActivity {
 
     private ArrayList<Restaurant> getData(){
         arrayList = new ArrayList<>();
-        arrayList.add(new Restaurant(R.drawable.blank_profile, "Mc Donald's", "This is a Mc Donald's", 10.0F));
-        arrayList.add(new Restaurant(R.drawable.blank_profile, "Burger king", "This is a burger king", 8.0F));
-        arrayList.add(new Restaurant(R.drawable.blank_profile, "KFC", "This is a KFC", 12.0F));
-        arrayList.add(new Restaurant(R.drawable.blank_profile, "Subway", "This is a Subway", 10.0F));
-        arrayList.add(new Restaurant(R.drawable.blank_profile, "Pizza Hut", "This is a Pizza Hut", 18.0F));
-        arrayList.add(new Restaurant(R.drawable.blank_profile, "Starbucks", "This is a Starbucks", 5.0F));
-        arrayList.add(new Restaurant(R.drawable.blank_profile, "Domino's Pizza", "This is a Domino's Pizza", 12.0F));
+        arrayList.add(new Restaurant(R.drawable.blank_profile, "Mc Donald's", "This is a Mc Donald's",  10.0F, "Esempio di descrizione completa"));
+        arrayList.add(new Restaurant(R.drawable.blank_profile, "Burger king", "This is a burger king", 8.0F,"Esempio di descrizione completa"));
+        arrayList.add(new Restaurant(R.drawable.blank_profile, "KFC", "This is a KFC", 12.0F, "Esempio di descrizione completa"));
+        arrayList.add(new Restaurant(R.drawable.blank_profile, "Subway", "This is a Subway", 10.0F, "Esempio di descrizione completa"));
+        arrayList.add(new Restaurant(R.drawable.blank_profile, "Pizza Hut", "This is a Pizza Hut", 18.0F, "Esempio di descrizione completa"));
+        arrayList.add(new Restaurant(R.drawable.blank_profile, "Starbucks", "This is a Starbucks", 5.0F, "Esempio di descrizione completa"));
+        arrayList.add(new Restaurant(R.drawable.blank_profile, "Domino's Pizza", "This is a Domino's Pizza", 12.0F,"Esempio di descrizione completa"));
 
 
 
