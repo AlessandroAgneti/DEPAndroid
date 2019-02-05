@@ -2,9 +2,12 @@ package com.example.depeat.ui.activities.adapters;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -15,6 +18,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.example.depeat.R;
 import com.example.depeat.datamodels.Restaurant;
+import com.example.depeat.ui.activities.CheckoutActivity;
+
 import java.util.ArrayList;
 
 
@@ -23,6 +28,8 @@ public class RestaurantAdapter extends RecyclerView.Adapter {
     private LayoutInflater inflater;
     private ArrayList<Restaurant> data;
     private Context context;
+    public static boolean isGridMode=false;
+
 
     public RestaurantAdapter(Context context, ArrayList<Restaurant> data){
         inflater = LayoutInflater.from(context);
@@ -30,9 +37,22 @@ public class RestaurantAdapter extends RecyclerView.Adapter {
         this.context = context;
     }
 
+    public static boolean isGridMode(){
+        return isGridMode;
+    }
+
+    public static void setGridMode(boolean gridMode){
+        isGridMode = gridMode;
+    }
+
+
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = inflater.inflate(R.layout.item_restaurant_cardview, viewGroup, false); // Il viewGroup sarebbe la recyclerView
+
+        int layout = isGridMode? R.layout.grid_item_restaurant_cardview : R.layout.item_restaurant_cardview;
+        View view = inflater.inflate(layout,viewGroup,false);
+        //View view = inflater.inflate(R.layout.item_restaurant_cardview, viewGroup, false); // Il viewGroup sarebbe la recyclerView
         return new RestaurantViewHolder(view); //Vuole un oggetto figlio ovvero che lo estende
     }
 
@@ -64,6 +84,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter {
         private Button menuButton;
         private Animation animationUp;
         private Animation animationDown;
+        private CardView cardExpand;
 
         public RestaurantViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -75,21 +96,25 @@ public class RestaurantAdapter extends RecyclerView.Adapter {
             linearLayout = itemView.findViewById(R.id.expandableLayout);
             desc_complete = itemView.findViewById(R.id.desc_complete);
             menuButton = itemView.findViewById(R.id.buttonMenu);
+            cardExpand = itemView.findViewById(R.id.card_expand);
 
-            //animationUp = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_up);
-            //animationDown = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.slide_down);
+
+            animationUp = AnimationUtils.loadAnimation(context, R.anim.slide_up);
+            animationDown = AnimationUtils.loadAnimation(context, R.anim.slide_down);
 
             plusButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (linearLayout.getVisibility() == View.GONE){
                         linearLayout.setVisibility(View.VISIBLE);
-                        //linearLayout.startAnimation(animationUp);
+                        cardExpand.startAnimation(animationDown);
+
 
                         plusButton.setImageResource(R.drawable.ic_notexpand);
                     }else if(linearLayout.getVisibility() == View.VISIBLE){
                         linearLayout.setVisibility(View.GONE);
-                        //linearLayout.startAnimation(animationDown);
+                        cardExpand.startAnimation(animationUp);
+
 
                         plusButton.setImageResource(R.drawable.ic_expand);
                     }
@@ -99,7 +124,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter {
             menuButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //startActivity(new Intent(this, CheckoutActivity.class));
+                    context.startActivity(new Intent(context, CheckoutActivity.class));
                 }
             });
 
