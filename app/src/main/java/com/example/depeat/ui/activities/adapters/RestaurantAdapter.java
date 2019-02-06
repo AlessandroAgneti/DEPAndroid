@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.example.depeat.R;
 import com.example.depeat.datamodels.Restaurant;
 import com.example.depeat.ui.activities.CheckoutActivity;
+import com.example.depeat.ui.activities.ShopActivity;
 
 import java.util.ArrayList;
 
@@ -85,8 +86,9 @@ public class RestaurantAdapter extends RecyclerView.Adapter {
         private Animation animationUp;
         private Animation animationDown;
         private CardView cardExpand;
+        private CardView cardViewGrid;
 
-        public RestaurantViewHolder(@NonNull View itemView) {
+        public RestaurantViewHolder(@NonNull View itemView){
             super(itemView);
             restaurantName = itemView.findViewById(R.id.name_tv);
             restaurantAddress = itemView.findViewById(R.id.name_indirizzo);
@@ -97,6 +99,8 @@ public class RestaurantAdapter extends RecyclerView.Adapter {
             desc_complete = itemView.findViewById(R.id.desc_complete);
             menuButton = itemView.findViewById(R.id.buttonMenu);
             cardExpand = itemView.findViewById(R.id.card_expand);
+            cardViewGrid =  itemView.findViewById(R.id.cardViewGrid);
+
 
 
             animationUp = AnimationUtils.loadAnimation(context, R.anim.slide_up);
@@ -124,7 +128,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter {
             menuButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    context.startActivity(new Intent(context, CheckoutActivity.class));
+                    context.startActivity(new Intent(context, ShopActivity.class));
                 }
             });
 

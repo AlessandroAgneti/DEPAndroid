@@ -1,78 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:id="@+id/cardViewGrid"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:layout_margin="8dp"
+    android:orientation="vertical"
+    app:cardCornerRadius="16dp"
     app:cardElevation="8dp">
 
 
-        <LinearLayout
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/image_restaurant"
             android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/blank_profile" />
+
+        <TextView
+            android:id="@+id/name_tv"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="16dp">
-                <ImageView
-                    android:id="@+id/image_restaurant"
-                    android:layout_width="match_parent"
-                    android:layout_height="70dp"
-                    android:src="@drawable/blank_profile"
-                    android:scaleType="centerCrop"/>
-                <TextView
-                    android:id="@+id/name_tv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Titolo"
-                    android:fontFamily="sans-serif-medium"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="30sp"/>
+            android:fontFamily="sans-serif-mediumexit"
+            android:text="Titolo"
+            android:textColor="@color/colorBlack"
+            android:textSize="30sp" />
 
-                <TextView
-                    android:id="@+id/name_indirizzo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="indirizzo"/>
+        <TextView
+            android:id="@+id/name_indirizzo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="indirizzo" />
 
 
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_marginTop="8dp"
-                    android:background="@color/colorBlack"
-                    android:layout_height="1dp"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/colorBlack" />
 
 
+        <TextView
+            android:id="@+id/name_float"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:visibility="gone"
+            tools:text="ordine minimo 15 euro" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:id="@+id/name_float"
-                android:layout_marginTop="8dp"
-                tools:text="ordine minimo 15 euro"/>
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/menu"
-                android:id="@+id/buttonMenu"
-                android:layout_gravity="bottom|end"
-                style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"/>
-
-
-            <ImageView
-                android:id="@+id/button_plus"
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/ic_expand"/>
-            <TextView
-                android:id="@+id/desc_complete"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/buttonMenu"
+            style="@style/Base.Widget.AppCompat.Button.Borderless.Colored"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|end"
+            android:text="@string/menu" />
 
 
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/button_plus"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_expand" />
+
+        <TextView
+            android:id="@+id/desc_complete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+
+    </LinearLayout>
 
 
 </android.support.v7.widget.CardView>

@@ -72,9 +72,6 @@ public class MainActivity extends AppCompatActivity {
         arrayList.add(new Restaurant(R.drawable.blank_profile, "Pizza Hut", "This is a Pizza Hut", 18.0F, "Esempio di descrizione completa"));
         arrayList.add(new Restaurant(R.drawable.blank_profile, "Starbucks", "This is a Starbucks", 5.0F, "Esempio di descrizione completa"));
         arrayList.add(new Restaurant(R.drawable.blank_profile, "Domino's Pizza", "This is a Domino's Pizza", 12.0F,"Esempio di descrizione completa"));
-
-
-
         return arrayList;
     }
 
