@@ -16,6 +16,8 @@ import android.view.View;
 import android.view.WindowManager;
 
 import com.example.depeat.R;
+import com.example.depeat.datamodels.Food;
+import com.example.depeat.ui.activities.adapters.FoodAdapter;
 import com.example.depeat.ui.activities.adapters.RestaurantAdapter;
 import java.util.ArrayList;
 import com.example.depeat.datamodels.Restaurant;
@@ -33,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
     SharedPreferences sharedPreferences;
     private static final String SharedPrefs = "com.example.depeat.general_prefs";
     private static final String VIEW_MODE = "VIEW_MODE";
-    private static final String VIEW_ICON = "VIEW_ICON";
     private MenuItem viewButton;
 
     @Override

@@ -20,5 +20,5 @@
     <string name="my_account">My Account</string>
     <string name="menu">MENU</string>
     <string name="view_mode">View mode</string>
-    <string name="payment">Payment methods</string>
+    <string name="payment">Payment</string>
 </resources>
