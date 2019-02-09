@@ -21,4 +21,7 @@
     <string name="menu">MENU</string>
     <string name="view_mode">View mode</string>
     <string name="payment">Payment</string>
+    <string name="euro">€</string>
+    <string name="total_price">Total:</string>
+    <string name="min_order">Min Order:</string>
 </resources>

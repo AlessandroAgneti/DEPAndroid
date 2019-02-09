@@ -1,20 +1,21 @@
 package com.example.depeat.datamodels;
 
+import java.util.ArrayList;
+
 public class Restaurant {
     private int imageId;
     private String nome;
     private String indirizzo;
     private float minimoOrdine;
-
-
     private String desc_complete;
+    private ArrayList<Food> foods;
 
-    public Restaurant(int imageId, String nome, String indirizzo, float minimoOrdine, String desc_complete){
+    public Restaurant(int imageId, String nome, String indirizzo, float minimoOrdine){
         this.imageId = imageId;
         this.indirizzo = indirizzo;
         this.nome = nome;
         this.minimoOrdine = minimoOrdine;
-        this.desc_complete = desc_complete;
+        foods = new ArrayList<>();
     }
 
 
@@ -56,5 +57,13 @@ public class Restaurant {
 
     public float getMinimoOrdine() {
         return minimoOrdine;
+    }
+
+    public ArrayList<Food> getFoods() {
+        return foods;
+    }
+
+    public void setFoods(ArrayList<Food> foods) {
+        this.foods = foods;
     }
 }

@@ -3,12 +3,12 @@ package com.example.depeat.datamodels;
 public class Food {
     private int imageFoodId;
     private String nomeFood;
-    private String prezzoFood;
+    private float prezzoFood;
+    private int quantity = 0;
     private String descrizioneFood;
 
-    public Food(int imageFoodId, String nomeFood, String prezzoFood, String descrizioneFood){
+    public Food(int imageFoodId, String nomeFood, float prezzoFood){
         this.imageFoodId = imageFoodId;
-        this.descrizioneFood = descrizioneFood;
         this.nomeFood = nomeFood;
         this.prezzoFood = prezzoFood;
     }
@@ -30,11 +30,11 @@ public class Food {
         this.nomeFood = nomeFood;
     }
 
-    public String getPrezzoFood() {
+    public float getPrezzoFood() {
         return prezzoFood;
     }
 
-    public void setPrezzoFood(String prezzoFood) {
+    public void setPrezzoFood(float prezzoFood) {
         this.prezzoFood = prezzoFood;
     }
 
@@ -44,5 +44,19 @@ public class Food {
 
     public void setDescrizioneFood(String descrizioneFood) {
         this.descrizioneFood = descrizioneFood;
+    }
+
+    public int getQuantity(){
+        return quantity;
+    }
+
+    public void increaseQuantitaty(){
+        this.quantity++;
+    }
+
+    public void decreaseQuantity(){
+        if(quantity == 0)
+            return;
+        this.quantity--;
     }
 }

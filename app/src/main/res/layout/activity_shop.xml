@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:paddingTop="56dp"
     android:background="@color/colorPrimary"
@@ -8,52 +9,58 @@
     android:layout_height="match_parent">
 
     <RelativeLayout
-        android:id="@+id/rl"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
+        android:id="@+id/rl_info_restaurant"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <ImageView
             android:background="@drawable/image_login"
-            android:layout_margin="4dp"
-            android:id="@+id/name_tv"
-            android:layout_width="120dp"
-            android:layout_height="120dp"
+            android:id="@+id/img_restaurant_shop"
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
             android:scaleType="centerCrop"
             android:src="@drawable/blank_profile" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="160dp"
+            android:background="@color/material_light_black"
+            android:alpha="0.7"/>
+
+
 
         <TextView
             android:id="@+id/name_restaurant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
-            android:layout_marginTop="32dp"
-            android:layout_toEndOf="@+id/name_tv"
+            android:layout_above="@id/address_restaurant"
             android:fontFamily="sans-serif-medium"
-            android:text="Nome del Ristorante"
-            android:textColor="@color/colorWhite"
-            android:textSize="24sp" />
+            tools:text="Nome del Ristorante"
+            android:textColor="@color/material_light_white"
+            android:textSize="@dimen/material_typography_display1"
+            />
 
         <TextView
             android:id="@+id/address_restaurant"
             android:layout_width="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/name_restaurant"
-            android:layout_toEndOf="@+id/name_tv"
-            android:text="via Sandro Sandri 81"
-            android:textColor="@color/colorWhite"
-            android:textSize="16sp"
-            android:fontFamily="sans-serif"
+            android:layout_alignBottom="@id/img_restaurant_shop"
+            tools:text="via Sandro Sandri 81"
+            android:textColor="@color/material_light_white"
+            android:layout_marginBottom="4dp"
+            android:textSize="@dimen/material_typography_caption"            android:fontFamily="sans-serif"
             />
 
         <ImageView
             android:layout_width="wrap_content"
+            android:layout_marginBottom="4dp"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_place_black_24dp"
             android:layout_toEndOf="@+id/address_restaurant"
-            android:layout_below="@+id/name_restaurant"/>
+            android:layout_alignBottom="@id/img_restaurant_shop"
+            />
 
     </RelativeLayout>
 
@@ -61,7 +68,7 @@
         android:id="@+id/separator"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:layout_below="@+id/rl"
+        android:layout_below="@+id/rl_info_restaurant"
         android:background="@color/colorWhite" />
 
     <android.support.v7.widget.RecyclerView
@@ -69,20 +76,20 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/separator"
-        android:layout_above="@id/rl4">
+        android:layout_above="@id/rl_info_checkout">
     </android.support.v7.widget.RecyclerView>
 
 
     <RelativeLayout
         android:background="@drawable/baselinecheckout"
-        android:id="@+id/rl4"
+        android:id="@+id/rl_info_checkout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true">
 
 
         <RelativeLayout
-            android:id="@+id/rl3"
+            android:id="@+id/rl_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
@@ -92,26 +99,36 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="8dp"
-                android:text="Total:"
+                android:text="@string/total_price"
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/id_total_number"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"
                 android:layout_toEndOf="@+id/text_total"
-                android:text="5.00€"
+                android:text="0.00"
                 android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="4dp"
+                android:layout_toEndOf="@+id/id_total_number"
+                android:text="@string/euro"
+                android:textSize="16sp" />
+
 
         </RelativeLayout>
 
         <RelativeLayout
-            android:id="@+id/rl5"
+            android:id="@+id/rl_minOrder"
             android:layout_alignParentEnd="true"
             android:layout_width="wrap_content"
-            android:layout_marginEnd="8dp"
             android:layout_height="wrap_content">
 
             <TextView
@@ -120,17 +137,28 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="4dp"
-                android:text="Min Order:"
+                android:text="@string/min_order"
                 android:textSize="16sp" />
 
             <TextView
+                android:id="@+id/minOrderNumber"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"
                 android:layout_toEndOf="@+id/text_minOrder"
-                android:text="5.00€"
+                tools:text="55.00"
+                android:textSize="16sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="4dp"
+                android:layout_marginTop="4dp"
+                android:layout_toEndOf="@+id/minOrderNumber"
+                android:text="@string/euro"
                 android:textSize="16sp" />
 
         </RelativeLayout>
@@ -142,7 +170,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:progressTint="@color/colorRedAccent"
-            android:layout_below="@id/rl3"
+            android:layout_below="@id/rl_total"
             android:progress="25" />
 
         <Button
@@ -154,7 +182,7 @@
             android:fontFamily="sans-serif-condensed-medium"
             android:layout_margin="8dp"
             android:textSize="14sp"
-            android:text="Checkout" />
+            android:text="@string/checkout" />
 
     </RelativeLayout>
 

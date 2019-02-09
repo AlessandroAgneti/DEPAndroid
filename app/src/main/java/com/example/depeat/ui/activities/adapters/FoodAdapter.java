@@ -8,11 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.example.depeat.R;
 import com.example.depeat.datamodels.Food;
-
 import java.util.ArrayList;
 
 public class FoodAdapter extends RecyclerView.Adapter {
@@ -20,11 +17,23 @@ public class FoodAdapter extends RecyclerView.Adapter {
     private Context context;
     private ArrayList<Food> dataFood;
     private LayoutInflater inflater;
+    private OnQuantityChangedListener onQuantityChangedListener;
 
     public FoodAdapter(Context context, ArrayList<Food> dataFood){
         inflater = LayoutInflater.from(context);
         this.dataFood = dataFood;
-        this.context = context;
+    }
+
+    public interface OnQuantityChangedListener{
+        void onChange(float priceFood);
+    }
+
+    public OnQuantityChangedListener getOnQuantityChangedListener(){
+        return onQuantityChangedListener;
+    }
+
+    public void setOnQuantityChangedListener(OnQuantityChangedListener onQuantityChangedListener){
+     this.onQuantityChangedListener = onQuantityChangedListener;
     }
 
     @NonNull
@@ -40,8 +49,9 @@ public class FoodAdapter extends RecyclerView.Adapter {
         Food f = dataFood.get(position);
         vh.foodName.setText(f.getNomeFood());
         vh.foodDescription.setText(f.getDescrizioneFood());
-        vh.foodPrice.setText(f.getPrezzoFood());
+        vh.foodPrice.setText(String.valueOf(f.getPrezzoFood()));
         vh.photoFood.setImageResource(f.getImageFoodId());
+        vh.foodQuantity.setText(String.valueOf(f.getQuantity()));
     }
 
     @Override
@@ -50,37 +60,45 @@ public class FoodAdapter extends RecyclerView.Adapter {
     }
 
 
-    public class FoodViewHolder extends RecyclerView.ViewHolder{
+    public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView foodName;
         private TextView foodPrice;
         private TextView foodDescription;
         private ImageView addButton;
         private ImageView removeButton;
         private ImageView photoFood;
+        private TextView foodQuantity;
 
         public FoodViewHolder(@NonNull View itemView) {
             super(itemView);
-
-            foodDescription = itemView.findViewById(R.id.id_descrizione_food);
+            foodDescription = itemView.findViewById(R.id.id_description_food);
             foodName = itemView.findViewById(R.id.id_name_food);
-            foodPrice = itemView.findViewById(R.id.id_prezzo_food);
+            foodPrice = itemView.findViewById(R.id.id_price_food);
             addButton = itemView.findViewById(R.id.id_add_food);
             removeButton = itemView.findViewById(R.id.id_remove_food);
             photoFood = itemView.findViewById(R.id.id_image_food);
+            foodQuantity = itemView.findViewById(R.id.id_number_food);
 
-            addButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(context, "Aggiunto piatto", Toast.LENGTH_SHORT).show();
-                }
-            });
 
-            removeButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(context, "Rimosso piatto", Toast.LENGTH_SHORT).show();
-                }
-            });
+            addButton.setOnClickListener(this);
+            removeButton.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View v) {
+            Food food = dataFood.get(getAdapterPosition()); //Mi vado a prendere l'oggetto che è stato prodotto in quel momento
+            if(v.getId() == R.id.id_add_food){
+                food.increaseQuantitaty();
+                notifyItemChanged(getAdapterPosition());
+                onQuantityChangedListener.onChange(food.getPrezzoFood());
+            }else if(v.getId() == R.id.id_remove_food){
+                if(food.getQuantity() == 0)
+                    return;
+                food.decreaseQuantity();
+                notifyItemChanged(getAdapterPosition());
+                onQuantityChangedListener.onChange(food.getPrezzoFood()*-1);
+            }
         }
     }
 }
