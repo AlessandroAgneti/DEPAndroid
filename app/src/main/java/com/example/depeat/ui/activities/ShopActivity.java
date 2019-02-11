@@ -1,5 +1,6 @@
 package com.example.depeat.ui.activities;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
@@ -80,6 +81,14 @@ public class ShopActivity extends AppCompatActivity implements FoodAdapter.OnQua
         foodRV.setAdapter(foodAdapter);
 
 
+        buttonCheckout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(ShopActivity.this, CheckoutActivity.class));
+            }
+        });
+
+
     }
 
     //TODO hardcore
@@ -109,10 +118,15 @@ public class ShopActivity extends AppCompatActivity implements FoodAdapter.OnQua
         progressBar.setProgress(progress);
     }
 
+    private void enableButton(){
+        buttonCheckout.setEnabled(total >= restaurant.getMinimoOrdine());
+    }
+
 
     @Override
     public void onChange(float priceFood) {
         updateTotal(priceFood);
         updateProgressBar((int)total*100);
+        enableButton();
     }
 }

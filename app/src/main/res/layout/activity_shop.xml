@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
-    android:paddingTop="56dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/colorPrimary"
     android:clipToPadding="true"
-    android:layout_height="match_parent">
+    android:orientation="vertical"
+    android:paddingTop="56dp">
 
     <RelativeLayout
         android:id="@+id/rl_info_restaurant"
@@ -14,53 +14,50 @@
         android:layout_height="wrap_content">
 
         <ImageView
-            android:background="@drawable/image_login"
             android:id="@+id/img_restaurant_shop"
             android:layout_width="match_parent"
             android:layout_height="160dp"
+            android:background="@drawable/image_login"
             android:scaleType="centerCrop"
             android:src="@drawable/blank_profile" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="160dp"
-            android:background="@color/material_light_black"
-            android:alpha="0.7"/>
-
+            android:alpha="0.7"
+            android:background="@color/material_light_black" />
 
 
         <TextView
             android:id="@+id/name_restaurant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
             android:layout_above="@id/address_restaurant"
+            android:layout_marginStart="4dp"
             android:fontFamily="sans-serif-medium"
-            tools:text="Nome del Ristorante"
             android:textColor="@color/material_light_white"
             android:textSize="@dimen/material_typography_display1"
-            />
+            tools:text="Nome del Ristorante" />
 
         <TextView
             android:id="@+id/address_restaurant"
             android:layout_width="wrap_content"
-            android:layout_marginStart="4dp"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/img_restaurant_shop"
-            tools:text="via Sandro Sandri 81"
-            android:textColor="@color/material_light_white"
+            android:layout_marginStart="4dp"
             android:layout_marginBottom="4dp"
-            android:textSize="@dimen/material_typography_caption"            android:fontFamily="sans-serif"
-            />
+            android:fontFamily="sans-serif"
+            android:textColor="@color/material_light_white"
+            android:textSize="@dimen/material_typography_caption"
+            tools:text="via Sandro Sandri 81" />
 
         <ImageView
             android:layout_width="wrap_content"
-            android:layout_marginBottom="4dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_place_black_24dp"
-            android:layout_toEndOf="@+id/address_restaurant"
             android:layout_alignBottom="@id/img_restaurant_shop"
-            />
+            android:layout_marginBottom="4dp"
+            android:layout_toEndOf="@+id/address_restaurant"
+            android:src="@drawable/ic_place_black_24dp" />
 
     </RelativeLayout>
 
@@ -75,17 +72,16 @@
         android:id="@+id/list_food"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/separator"
-        android:layout_above="@id/rl_info_checkout">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_above="@id/rl_info_checkout"
+        android:layout_below="@id/separator"></android.support.v7.widget.RecyclerView>
 
 
     <RelativeLayout
-        android:background="@drawable/baselinecheckout"
         android:id="@+id/rl_info_checkout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/baselinecheckout">
 
 
         <RelativeLayout
@@ -127,9 +123,9 @@
 
         <RelativeLayout
             android:id="@+id/rl_minOrder"
-            android:layout_alignParentEnd="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true">
 
             <TextView
                 android:id="@+id/text_minOrder"
@@ -148,15 +144,15 @@
                 android:layout_marginStart="4dp"
                 android:layout_marginTop="4dp"
                 android:layout_toEndOf="@+id/text_minOrder"
-                tools:text="55.00"
-                android:textSize="16sp" />
+                android:textSize="16sp"
+                tools:text="55.00" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="4dp"
                 android:layout_marginTop="4dp"
+                android:layout_marginEnd="4dp"
                 android:layout_toEndOf="@+id/minOrderNumber"
                 android:text="@string/euro"
                 android:textSize="16sp" />
@@ -168,21 +164,21 @@
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:progressTint="@color/colorRedAccent"
             android:layout_below="@id/rl_total"
-            android:progress="25" />
+            android:layout_margin="8dp"
+            android:progress="25"
+            android:progressTint="@color/colorRedAccent" />
 
         <Button
             android:id="@+id/id_buttonCheckout"
-            android:background="@drawable/button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/determinateBar"
-            android:fontFamily="sans-serif-condensed-medium"
             android:layout_margin="8dp"
-            android:textSize="14sp"
-            android:text="@string/checkout" />
+            android:background="@drawable/button"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="@string/checkout"
+            android:textSize="14sp" />
 
     </RelativeLayout>
 

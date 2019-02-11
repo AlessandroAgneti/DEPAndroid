@@ -24,4 +24,6 @@
     <string name="euro">€</string>
     <string name="total_price">Total:</string>
     <string name="min_order">Min Order:</string>
+    <string name="order_summary">Order Summary</string>
+    <string name="pay">PAY</string>
 </resources>

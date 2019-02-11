@@ -59,4 +59,8 @@ public class Food {
             return;
         this.quantity--;
     }
+
+    public float getSubtotal(){
+        return quantity*prezzoFood;
+    }
 }
