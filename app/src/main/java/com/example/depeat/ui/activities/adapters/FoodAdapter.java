@@ -14,10 +14,8 @@ import java.util.ArrayList;
 
 public class FoodAdapter extends RecyclerView.Adapter {
 
-    private Context context;
     private ArrayList<Food> dataFood;
     private LayoutInflater inflater;
-    private OnQuantityChangedListener onQuantityChangedListener;
 
     public FoodAdapter(Context context, ArrayList<Food> dataFood){
         inflater = LayoutInflater.from(context);
@@ -36,6 +34,8 @@ public class FoodAdapter extends RecyclerView.Adapter {
      this.onQuantityChangedListener = onQuantityChangedListener;
     }
 
+    private OnQuantityChangedListener onQuantityChangedListener;
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -48,9 +48,8 @@ public class FoodAdapter extends RecyclerView.Adapter {
         FoodViewHolder vh = (FoodViewHolder)viewHolder;
         Food f = dataFood.get(position);
         vh.foodName.setText(f.getNomeFood());
-        vh.foodDescription.setText(f.getDescrizioneFood());
+        //vh.foodDescription.setText(f.getDescrizioneFood());
         vh.foodPrice.setText(String.valueOf(f.getPrezzoFood()));
-        vh.photoFood.setImageResource(f.getImageFoodId());
         vh.foodQuantity.setText(String.valueOf(f.getQuantity()));
     }
 
@@ -66,7 +65,6 @@ public class FoodAdapter extends RecyclerView.Adapter {
         private TextView foodDescription;
         private ImageView addButton;
         private ImageView removeButton;
-        private ImageView photoFood;
         private TextView foodQuantity;
 
         public FoodViewHolder(@NonNull View itemView) {
@@ -76,7 +74,6 @@ public class FoodAdapter extends RecyclerView.Adapter {
             foodPrice = itemView.findViewById(R.id.id_price_food);
             addButton = itemView.findViewById(R.id.id_add_food);
             removeButton = itemView.findViewById(R.id.id_remove_food);
-            photoFood = itemView.findViewById(R.id.id_image_food);
             foodQuantity = itemView.findViewById(R.id.id_number_food);
 
 
@@ -96,9 +93,11 @@ public class FoodAdapter extends RecyclerView.Adapter {
                 if(food.getQuantity() == 0)
                     return;
                 food.decreaseQuantity();
-                notifyItemChanged(getAdapterPosition());
                 onQuantityChangedListener.onChange(food.getPrezzoFood()*-1);
             }
+
+            notifyItemChanged(getAdapterPosition());
+
         }
     }
 }

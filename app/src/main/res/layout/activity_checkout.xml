@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@color/colorPrimary"
-    android:orientation="vertical">
+    android:background="@color/colorPrimary">
 
     <LinearLayout
         android:id="@+id/linearLayoutCheckout"
@@ -16,10 +15,10 @@
             android:id="@+id/id_tv_checkout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="32dp"
             android:fontFamily="sans-serif-condensed-medium"
             android:text="@string/order_summary"
-            android:layout_marginTop="32dp"
-            android:layout_marginStart="8dp"
             android:textColor="@color/material_light_white"
             android:textSize="26sp" />
 
@@ -27,30 +26,29 @@
             android:id="@+id/id_name_restaurant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="La fraschetta"
-            android:textSize="20sp"
-            android:textColor="@color/material_light_white"
             android:layout_marginStart="8dp"
-            android:fontFamily="sans-serif"/>
+            android:fontFamily="sans-serif"
+            android:textColor="@color/material_light_white"
+            android:textSize="20sp"
+            tools:text="La fraschetta" />
 
         <TextView
+            android:id="@+id/id_indirizzo_restaurant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/id_indirizzo_restaurant"
-            android:textSize="18sp"
-            android:textColor="@color/material_light_white"
+            android:layout_marginStart="8dp"
             android:fontFamily="sans-serif"
-            tools:text = "La fraschetta"
-            android:layout_marginStart="8dp"/>
+            android:textColor="@color/material_light_white"
+            android:textSize="18sp"
+            tools:text="La fraschetta" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_margin="8dp"
+            android:background="@color/colorWhite" />
+
     </LinearLayout>
-
-    <View
-        android:layout_below="@id/linearLayoutCheckout"
-        android:layout_margin="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorWhite"/>
-
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_id"
@@ -60,21 +58,26 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"/>
+        android:layout_marginBottom="8dp"
+        android:layout_above="@id/relativelayouttotal"/>
 
     <View
         android:id="@+id/view_separator2"
-        android:layout_below="@id/recyclerview_id"
-        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="@color/colorWhite"/>
+        android:layout_below="@id/recyclerview_id"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/colorWhite" />
 
     <RelativeLayout
+        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/view_button_pay"
-        android:layout_below="@id/view_separator2">
+        android:id="@+id/relativelayouttotal"
+        android:layout_above="@id/button_payment"
+       >
 
         <TextView
             android:id="@+id/id_total"
@@ -112,27 +115,20 @@
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/view_button_pay"
+
+    <Button
+        android:layout_alignParentBottom="true"
+        android:id="@+id/button_payment"
+        android:backgroundTint="@color/material_light_white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:background="@drawable/baselinecheckout"
-
-        >
-
-        <Button
-            android:id="@+id/button_payment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:enabled="true"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginBottom="8dp"
-            android:background="@drawable/button"
-            android:text="@string/pay" />
-    </LinearLayout>
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/button"
+        android:enabled="true"
+        android:text="@string/pay" />
 
 
 </RelativeLayout>

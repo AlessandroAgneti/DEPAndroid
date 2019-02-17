@@ -73,8 +73,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@id/rl_info_checkout"
-        android:layout_below="@id/separator"></android.support.v7.widget.RecyclerView>
-
+        android:layout_below="@id/separator"/>
 
     <RelativeLayout
         android:id="@+id/rl_info_checkout"

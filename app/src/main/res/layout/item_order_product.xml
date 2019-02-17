@@ -39,6 +39,6 @@
         android:layout_height="wrap_content"
         android:id="@+id/remove_btn"
         android:layout_alignParentEnd="true"
-        android:src="@drawable/ic_remove_24dp"/>
+        android:src="@drawable/ic_clear_black_24dp"/>
 
 </RelativeLayout>

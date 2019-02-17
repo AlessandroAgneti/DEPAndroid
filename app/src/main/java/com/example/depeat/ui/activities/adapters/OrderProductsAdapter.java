@@ -1,6 +1,8 @@
 package com.example.depeat.ui.activities.adapters;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import com.example.depeat.R;
 import com.example.depeat.datamodels.Food;
 
@@ -19,14 +20,31 @@ public class OrderProductsAdapter extends RecyclerView.Adapter<OrderProductsAdap
     private ArrayList<Food> dataSet;
     private Context context;
     private LayoutInflater inflater;
+    private float miniumOrder;
 
-
-    public OrderProductsAdapter(Context context, ArrayList<Food> dataSet){
+    public OrderProductsAdapter(Context context, ArrayList<Food> dataSet, float miniumOrder){
         this.dataSet = dataSet;
         this.context = context;
         inflater = LayoutInflater.from(context);
+        this.miniumOrder = miniumOrder;
     }
 
+    public interface onItemRemovedListener{
+        void onItemRemoved(float subtotal);
+
+    }
+
+
+    private onItemRemovedListener onItemRemovedListener;
+
+
+    public OrderProductsAdapter.onItemRemovedListener getOnItemRemovedListener() {
+        return onItemRemovedListener;
+    }
+
+    public void setOnItemRemovedListener(OrderProductsAdapter.onItemRemovedListener onItemRemovedListener) {
+        this.onItemRemovedListener = onItemRemovedListener;
+    }
 
     @NonNull
     @Override
@@ -48,6 +66,12 @@ public class OrderProductsAdapter extends RecyclerView.Adapter<OrderProductsAdap
         return dataSet.size();
     }
 
+
+    private void removeItem(int index){
+        dataSet.remove(index);
+        notifyItemRemoved(index);
+
+    }
     public class OrderProductViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         public TextView quantityTv, productNameTv, subTotalTv;
@@ -64,9 +88,28 @@ public class OrderProductsAdapter extends RecyclerView.Adapter<OrderProductsAdap
 
         @Override
         public void onClick(View v) {
-            //TODO alertDialog
-            dataSet.remove(getAdapterPosition());
-            notifyItemRemoved(getAdapterPosition());
+            AlertDialog.Builder myAlert = new AlertDialog.Builder(context);
+            myAlert.setTitle("Remove");
+            myAlert.setMessage("Are you sure to remove this?");
+            myAlert.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    onItemRemovedListener.onItemRemoved(dataSet.get(getAdapterPosition()).getSubtotal());
+                    removeItem(getAdapterPosition());
+                }
+            });
+
+            myAlert.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            myAlert.setCancelable(false);
+
+            myAlert.show();
+
         }
     }
 }

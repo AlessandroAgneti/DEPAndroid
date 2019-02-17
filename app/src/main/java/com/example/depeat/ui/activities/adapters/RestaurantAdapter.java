@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
@@ -16,9 +16,10 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 import com.example.depeat.R;
 import com.example.depeat.datamodels.Restaurant;
-import com.example.depeat.ui.activities.CheckoutActivity;
 import com.example.depeat.ui.activities.ShopActivity;
 
 import java.util.ArrayList;
@@ -38,6 +39,10 @@ public class RestaurantAdapter extends RecyclerView.Adapter {
         this.context = context;
     }
 
+    public RestaurantAdapter(Context context){
+        new RestaurantAdapter(context, new ArrayList<Restaurant>()); //Mi creo un secondo costruttore e chiamo quello di sopra passandogli un arraylist vuoto
+    }
+
     public static boolean isGridMode(){
         return isGridMode;
     }
@@ -50,7 +55,7 @@ public class RestaurantAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-
+        inflater = LayoutInflater.from(viewGroup.getContext());
         int layout = isGridMode? R.layout.grid_item_restaurant_cardview : R.layout.item_restaurant_cardview;
         View view = inflater.inflate(layout,viewGroup,false);
         //View view = inflater.inflate(R.layout.item_restaurant_cardview, viewGroup, false); // Il viewGroup sarebbe la recyclerView
@@ -63,15 +68,23 @@ public class RestaurantAdapter extends RecyclerView.Adapter {
         Restaurant r = data.get(position);
         vh.restaurantName.setText(r.getNome()); //Dico a quale posizione si trova il valore che io voglio richiamare nel data.
         vh.restaurantAddress.setText(r.getIndirizzo());
-        vh.restaurantImage.setImageResource(r.getImageId());
+        //vh.restaurantImage.setImageResource(Integer.valueOf(r.getImageId()));
         vh.restaurantMinOrder.setText(String.valueOf(r.getMinimoOrdine()));
         vh.desc_complete.setText(r.getDesc_complete());
-
+        Glide.with(context).load(r.getImageId()).into(vh.restaurantImage);
     }
 
     @Override
     public int getItemCount() {
+        if (data == null) {
+            return 0;
+        }
         return data.size();
+    }
+
+    public void setData(ArrayList<Restaurant> data){
+        this.data = data;
+        notifyDataSetChanged();
     }
 
     public class RestaurantViewHolder extends RecyclerView.ViewHolder {

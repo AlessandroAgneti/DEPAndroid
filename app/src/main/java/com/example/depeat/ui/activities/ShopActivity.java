@@ -8,12 +8,15 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SimpleItemAnimator;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 import com.example.depeat.R;
 import com.example.depeat.datamodels.Food;
 import com.example.depeat.datamodels.Restaurant;
@@ -54,7 +57,6 @@ public class ShopActivity extends AppCompatActivity implements FoodAdapter.OnQua
         getSupportActionBar().setTitle("Menu");
 
         setContentView(R.layout.activity_shop);
-        imageResturant = findViewById(R.id.img_restaurant_shop);
         nameRestaurant = findViewById(R.id.name_restaurant);
         addressRestaurant = findViewById(R.id.address_restaurant);
         totalPrice = findViewById(R.id.id_total_number);
@@ -63,21 +65,21 @@ public class ShopActivity extends AppCompatActivity implements FoodAdapter.OnQua
         buttonCheckout = findViewById(R.id.id_buttonCheckout);
         progressBar = findViewById(R.id.determinateBar);
         foodRV = findViewById(R.id.list_food);
-
         restaurant = getRestaurant();
         restaurant.setFoods(getFood());
 
         nameRestaurant.setText(restaurant.getNome());
         addressRestaurant.setText(restaurant.getIndirizzo());
-        imageResturant.setImageResource(restaurant.getImageId());
         progressBar.setMax((int)restaurant.getMinimoOrdine() * 100);
         minOrder.setText(String.valueOf(restaurant.getMinimoOrdine()));
 
+        binData();
         foodLayoutManager = new LinearLayoutManager(this);
         foodAdapter = new FoodAdapter(this, restaurant.getFoods());
         foodAdapter.setOnQuantityChangedListener(this);
 
         foodRV.setLayoutManager(foodLayoutManager);
+        ((SimpleItemAnimator) foodRV.getItemAnimator()).setSupportsChangeAnimations(false);
         foodRV.setAdapter(foodAdapter);
 
 
@@ -92,20 +94,33 @@ public class ShopActivity extends AppCompatActivity implements FoodAdapter.OnQua
     }
 
     //TODO hardcore
+    private void binData(){
+        restaurant = getRestaurant();
+        restaurant.setImageId("https://rovato5stelle.files.wordpress.com/2013/11/mcdonald.jpg");
+        restaurant.setFoods(getFood());
+        nameRestaurant.setText(restaurant.getNome());
+        addressRestaurant.setText(restaurant.getIndirizzo());
+        Glide.with(this).load(restaurant.getImageId()).into(imageResturant);
+        progressBar.setMax((int)restaurant.getMinimoOrdine() * 100);
+
+
+    }
+
+    //TODO hardcore
     private Restaurant getRestaurant(){
-        return new Restaurant(R.drawable.blank_profile , "NomeRistorante", "Via Sandro Sandri", 50.00f);
+        return new Restaurant("NomeRistorante", "Via Sandro Sandri", 50.00f);
     }
 
     //TODO hardcore
     private ArrayList<Food> getFood(){
         ArrayList<Food> food = new ArrayList<>();
-        food.add(new Food(R.drawable.blank_profile, "nome", 6.00f));
-        food.add(new Food(R.drawable.blank_profile, "nome", 6.00f));
-        food.add(new Food(R.drawable.blank_profile, "nome", 6.00f));
-        food.add(new Food(R.drawable.blank_profile, "nome", 6.00f));
-        food.add(new Food(R.drawable.blank_profile, "nome", 6.00f));
-        food.add(new Food(R.drawable.blank_profile, "nome", 6.00f));
-        food.add(new Food(R.drawable.blank_profile, "nome", 6.00f));
+        food.add(new Food("nome", 6.00f));
+        food.add(new Food("nome", 6.00f));
+        food.add(new Food("nome", 6.00f));
+        food.add(new Food("nome", 6.00f));
+        food.add(new Food("nome", 6.00f));
+        food.add(new Food("nome", 6.00f));
+        food.add(new Food("nome", 6.00f));
         return food;
     }
 

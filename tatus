@@ -1,0 +1,120 @@
+[33mcommit 26f6f03f09ffada0056117cda295caa6607e77a3[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: AlessandroAgneti <alex.agneti@gmail.com>
+Date:   Mon Feb 11 14:29:16 2019 +0100
+
+    Add Checkout activity
+
+[33mcommit 470ef8185cd61d12188793802104cbce5056acbb[m
+Author: AlessandroAgneti <alex.agneti@gmail.com>
+Date:   Sat Feb 9 11:37:37 2019 +0100
+
+    change java code
+
+[33mcommit a6832482f62dfb9a6193f4d2322534dab704b128[m
+Author: AlessandroAgneti <alex.agneti@gmail.com>
+Date:   Thu Feb 7 10:36:45 2019 +0100
+
+    Modify layout activity_shop and animation scrool carditem
+
+[33mcommit f5f311ac63ee1711a0a762c498757ba6703f440f[m
+Author: AlessandroAgneti <alex.agneti@gmail.com>
+Date:   Wed Feb 6 23:10:30 2019 +0100
+
+    Add ShopActivity and CheckoutActivity
+
+[33mcommit afda771ef037be399083d51f94bb4b0d0f441a09[m
+Author: AlessandroAgneti <alex.agneti@gmail.com>
+Date:   Wed Feb 6 12:41:46 2019 +0100
+
+    add activity_shop
+
+[33mcommit 8f13a37971ae1a04245874bee7fbfbfb376bd26a[m
+Author: AlessandroAgneti <alex.agneti@gmail.com>
+Date:   Tue Feb 5 15:55:13 2019 +0100
+
+    Add gridlayout, view_mode and item_grid
+
+[33mcommit 6ad9a7a702aa7eac67f5ad03e149609ef8c95190[m
+Author: AlessandroAgneti <alex.agneti@gmail.com>
+Date:   Tue Feb 5 00:20:46 2019 +0100
+
+    add button for menu and change layout
+
+[33mcommit 334a891960987d578a1888293dbc6a65bcfa551b[m
+Author: AlessandroAgneti <alex.agneti@gmail.com>
+Date:   Mon Feb 4 17:11:25 2019 +0100
+
+    change layout of menu
+
+[33mcommit ef3ce5aaf10322ebd8d35a66e62d0a3edd263886[m
+Author: AlessandroAgneti <alex.agneti@gmail.com>
+Date:   Mon Feb 4 12:49:58 2019 +0100
+
+    add the menu activity
+
+[33mcommit 1c632dd4bc17e0cb51640b7a9c605ddadad971b8[m
+Author: AlessandroAgneti <alex.agneti@gmail.com>
+Date:   Sun Feb 3 17:16:13 2019 +0100
+
+    change color layout and the register activity
+
+[33mcommit 71c53b2533b2644b62b02180764afc755cca0481[m
+Author: AlessandroAgneti <alex.agneti@gmail.com>
+Date:   Sun Feb 3 01:08:33 2019 +0100
+
+    Change style login_activity
+
+[33mcommit ae59ac4692ddd63300304f00e90d502155871a6f[m
+Author: AlessandroAgneti <alex.agneti@gmail.com>
+Date:   Sun Feb 3 00:55:41 2019 +0100
+
+    Modify design of activity_login
+
+[33mcommit 93a60a8e375c70e8c12e4193dc38dde3c0155adb[m
+Merge: 37509f7 de3e5aa
+Author: AlessandroAgneti <alex.agneti@gmail.com>
+Date:   Fri Feb 1 19:16:13 2019 +0100
+
+    Merge remote-tracking branch 'origin/master'
+
+[33mcommit 37509f7e0619cd618b08a477d081294f7770da3c[m
+Author: AlessandroAgneti <alex.agneti@gmail.com>
+Date:   Fri Feb 1 19:14:18 2019 +0100
+
+    Change a little the design
+
+[33mcommit de3e5aac4c4f0a00f8bdff73822aa9d0c297077d[m
+Author: AlessandroAgneti <47036837+AlessandroAgneti@users.noreply.github.com>
+Date:   Thu Jan 31 19:54:51 2019 +0100
+
+    Add files via upload
+
+[33mcommit 0167cc1587952fcab73121264ff5ee27ea1d48da[m
+Author: AlessandroAgneti <alex.agneti@gmail.com>
+Date:   Thu Jan 31 19:51:59 2019 +0100
+
+    Modify mockup and code
+
+[33mcommit 99e760421566924bd9c6d10ec34410506cc2baad[m
+Author: AlessandroAgneti <alex.agneti@gmail.com>
+Date:   Thu Jan 31 17:27:59 2019 +0100
+
+    Modify the position of the activity. Add menu.
+
+[33mcommit 5e3c1593b25ca92490e3f9ecb7149ec090ade3a0[m
+Author: AlessandroAgneti <alex.agneti@gmail.com>
+Date:   Thu Jan 31 15:53:44 2019 +0100
+
+    Add code Java
+
+[33mcommit be1a2aeaa5408ab76d8578af55e1048eebb9785e[m
+Author: AlessandroAgneti <alex.agneti@gmail.com>
+Date:   Thu Jan 31 15:04:25 2019 +0100
+
+    First Login page
+
+[33mcommit d106339059f30e15ba36ff729804ef4b3645f849[m
+Author: AlessandroAgneti <alex.agneti@gmail.com>
+Date:   Tue Jan 29 17:17:02 2019 +0100
+
+    first commit

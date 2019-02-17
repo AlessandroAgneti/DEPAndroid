@@ -1,25 +1,22 @@
 package com.example.depeat.datamodels;
 
 public class Food {
-    private int imageFoodId;
     private String nomeFood;
     private float prezzoFood;
     private int quantity = 0;
     private String descrizioneFood;
 
-    public Food(int imageFoodId, String nomeFood, float prezzoFood){
-        this.imageFoodId = imageFoodId;
+    public Food(String nomeFood, float prezzoFood){
         this.nomeFood = nomeFood;
         this.prezzoFood = prezzoFood;
     }
 
 
-    public int getImageFoodId() {
-        return imageFoodId;
-    }
+    public Food(String nomeFood, float prezzoFood, int quantity){
 
-    public void setImageFoodId(int imageFoodId) {
-        this.imageFoodId = imageFoodId;
+        this.nomeFood = nomeFood;
+        this.prezzoFood = prezzoFood;
+        this.quantity = quantity;
     }
 
     public String getNomeFood() {

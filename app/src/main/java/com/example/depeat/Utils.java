@@ -11,10 +11,7 @@ import java.util.regex.Pattern;
 public class Utils {
 
     private static boolean isValidEmail(String email){
-        String expression = "^[\\w.-]+@([\\w\\-]+\\.)+[A-Z]{2,4}$";
-        Pattern pattern = Pattern.compile(expression, Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(email);
-        return matcher.matches();
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
     private static boolean isValidPassword(String password, int dimension_password){
