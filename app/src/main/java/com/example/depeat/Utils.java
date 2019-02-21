@@ -10,6 +10,8 @@ import java.util.regex.Pattern;
 
 public class Utils {
 
+    public static final int REQUEST_LOGIN = 2001;
+
     private static boolean isValidEmail(String email){
         return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }

@@ -34,6 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_above="@id/address_restaurant"
             android:layout_marginStart="4dp"
+            android:layout_marginBottom="8dp"
             android:fontFamily="sans-serif-medium"
             android:textColor="@color/material_light_white"
             android:textSize="@dimen/material_typography_display1"
@@ -43,6 +44,7 @@
             android:id="@+id/address_restaurant"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/gpsIMage"
             android:layout_alignBottom="@id/img_restaurant_shop"
             android:layout_marginStart="4dp"
             android:layout_marginBottom="4dp"
@@ -52,11 +54,11 @@
             tools:text="via Sandro Sandri 81" />
 
         <ImageView
+            android:id="@+id/gpsIMage"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignBottom="@id/img_restaurant_shop"
             android:layout_marginBottom="4dp"
-            android:layout_toEndOf="@+id/address_restaurant"
             android:src="@drawable/ic_place_black_24dp" />
 
     </RelativeLayout>

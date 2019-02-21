@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.bumptech.glide.Glide;
 import com.example.depeat.R;
 import com.example.depeat.datamodels.Food;
 import java.util.ArrayList;
@@ -25,6 +27,19 @@ public class FoodAdapter extends RecyclerView.Adapter {
     public interface OnQuantityChangedListener{
         void onChange(float priceFood);
     }
+
+    public void setData(ArrayList<Food> data) {
+        this.dataFood = data;
+        notifyDataSetChanged();
+    }
+
+    public FoodAdapter(Context context) {
+
+        this.dataFood = new ArrayList<>();
+        inflater = LayoutInflater.from(context);
+    }
+
+
 
     public OnQuantityChangedListener getOnQuantityChangedListener(){
         return onQuantityChangedListener;
@@ -51,6 +66,7 @@ public class FoodAdapter extends RecyclerView.Adapter {
         //vh.foodDescription.setText(f.getDescrizioneFood());
         vh.foodPrice.setText(String.valueOf(f.getPrezzoFood()));
         vh.foodQuantity.setText(String.valueOf(f.getQuantity()));
+
     }
 
     @Override
@@ -62,20 +78,20 @@ public class FoodAdapter extends RecyclerView.Adapter {
     public class FoodViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         private TextView foodName;
         private TextView foodPrice;
-        private TextView foodDescription;
+        //private TextView foodDescription;
         private ImageView addButton;
         private ImageView removeButton;
         private TextView foodQuantity;
+        private ImageView foodImage;
 
         public FoodViewHolder(@NonNull View itemView) {
             super(itemView);
-            foodDescription = itemView.findViewById(R.id.id_description_food);
+            //foodDescription = itemView.findViewById(R.id.id_description_food);
             foodName = itemView.findViewById(R.id.id_name_food);
             foodPrice = itemView.findViewById(R.id.id_price_food);
             addButton = itemView.findViewById(R.id.id_add_food);
             removeButton = itemView.findViewById(R.id.id_remove_food);
             foodQuantity = itemView.findViewById(R.id.id_number_food);
-
 
             addButton.setOnClickListener(this);
             removeButton.setOnClickListener(this);

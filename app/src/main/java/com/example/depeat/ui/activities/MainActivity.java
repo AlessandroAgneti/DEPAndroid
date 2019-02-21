@@ -1,10 +1,13 @@
 package com.example.depeat.ui.activities;
 
+import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -15,6 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -23,7 +27,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.depeat.R;
+import com.example.depeat.Utils;
 import com.example.depeat.datamodels.Food;
+import com.example.depeat.services.RestController;
 import com.example.depeat.ui.activities.adapters.FoodAdapter;
 import com.example.depeat.ui.activities.adapters.RestaurantAdapter;
 import java.util.ArrayList;
@@ -37,7 +43,7 @@ import static com.example.depeat.ui.activities.adapters.RestaurantAdapter.isGrid
 import static com.example.depeat.ui.activities.adapters.RestaurantAdapter.setGridMode;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements Response.Listener<String>, Response.ErrorListener{
 
     private static final String TAG = MainActivity.class.getSimpleName();
 
@@ -46,10 +52,13 @@ public class MainActivity extends AppCompatActivity {
     RestaurantAdapter adapter;
     ArrayList<Restaurant> arrayList = new ArrayList<>();
 
+    private RestController restController;
+
     SharedPreferences sharedPreferences;
+    private SharedPreferences profilePreferences;
+
     private static final String SharedPrefs = "com.example.depeat.general_prefs";
     private static final String VIEW_MODE = "VIEW_MODE";
-    private MenuItem viewButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,7 +75,6 @@ public class MainActivity extends AppCompatActivity {
         //Lo collego alla sua activity
         setContentView(R.layout.activity_main);
         restaurantRV = findViewById(R.id.places_rv);
-        viewButton = findViewById(R.id.view_mode);
 
         //Comment = layoutManager = new LinearLayoutManager(this);
         layoutManager = getLayoutManager(getSavedLayoutManager());
@@ -77,10 +85,17 @@ public class MainActivity extends AppCompatActivity {
         restaurantRV.setAdapter(adapter);
 
 
+        restController = new RestController(this);
+        restController.getRequest(Restaurant.ENDPOINT, this, this);
+
+        //SharedPref
+        profilePreferences = getSharedPreferences(getResources().getString(R.string.PROFILE_PREFERENCES), Context.MODE_PRIVATE);
+
+        /*
                                         //Prendo JSON
         // Instantiate the RequestQueue.
         RequestQueue queue = Volley.newRequestQueue(this);
-        String url ="http://5ba19290ee710f0014dd764c.mockapi.io/api/v1/restaurant";
+        String url ="http://138.68.86.70/restaurants";
 
         // Request a string response from the provided URL.
         StringRequest stringRequest = new StringRequest(
@@ -123,19 +138,7 @@ public class MainActivity extends AppCompatActivity {
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
 
-
-    }
-
-    private ArrayList<Restaurant> getData(){
-        arrayList = new ArrayList<>();
-        arrayList.add(new Restaurant("Mc Donald's", "This is a Mc Donald's",  10.0F));
-        arrayList.add(new Restaurant("Burger king", "This is a burger king", 8.0F));
-        arrayList.add(new Restaurant("KFC", "This is a KFC", 12.0F));
-        arrayList.add(new Restaurant("Subway", "This is a Subway", 10.0F));
-        arrayList.add(new Restaurant("Pizza Hut", "This is a Pizza Hut", 18.0F));
-        arrayList.add(new Restaurant("Starbucks", "This is a Starbucks", 5.0F));
-        arrayList.add(new Restaurant("Domino's Pizza", "This is a Domino's Pizza", 12.0F));
-        return arrayList;
+    */
     }
 
     //Creazione Menu
@@ -143,19 +146,45 @@ public class MainActivity extends AppCompatActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_main, menu);
+
         if(isGridMode())
-            menu.findItem(R.id.view_mode).setIcon(R.drawable.ic_view_list_black_24dp);
+            menu.findItem(R.id.action_mode).setIcon(R.drawable.ic_view_list_black_24dp);
         else
-            menu.findItem(R.id.view_mode).setIcon(R.drawable.ic_view_module_black_24dp);
+            menu.findItem(R.id.action_mode).setIcon(R.drawable.ic_view_module_black_24dp);
         return true;
     }
 
-
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if (profilePreferences.getString(getResources().getString(R.string.TOKEN), null) !=  null) {
+            menu.findItem(R.id.action_profile).setVisible(true);
+            menu.findItem(R.id.action_login).setVisible(false);
+        } else {
+            menu.findItem(R.id.action_profile).setVisible(false);
+            menu.findItem(R.id.action_login).setVisible(true);
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
 
     //Utilizzo dei metodi nel menu
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if(item.getItemId() == R.id.view_mode){
+        switch (item.getItemId()) {
+            case R.id.action_login:
+                requestLogin();
+                break;
+
+            case R.id.action_checkout:
+                startActivity(new Intent(this, CheckoutActivity.class));
+                break;
+
+            case R.id.action_profile:
+                startActivity(new Intent(this, ProfileActivity.class));
+                break;
+        }
+
+
+        /*if(item.getItemId() == R.id.view_mode){
             controllo_icona(item);
             setLayoutManager();
             return true;
@@ -167,7 +196,7 @@ public class MainActivity extends AppCompatActivity {
         }else if (item.getItemId() == R.id.checkout_menu){
             startActivity(new Intent(this, CheckoutActivity.class));
             return true;
-        }
+        }*/
         return super.onOptionsItemSelected(item);
     }
 
@@ -208,5 +237,41 @@ public class MainActivity extends AppCompatActivity {
     private boolean getSavedLayoutManager(){
         sharedPreferences = getSharedPreferences(SharedPrefs, MODE_PRIVATE);
         return sharedPreferences.getBoolean(VIEW_MODE, false);
+    }
+
+    @Override
+    public void onErrorResponse(VolleyError error) {
+        Log.e(TAG, error.getMessage());
+        Toast.makeText(this, error.getMessage(), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onResponse(String response) {
+        try{
+            JSONArray jsonArray = new JSONArray(response);
+            for (int i = 0; i < jsonArray.length(); i++){
+                arrayList.add(new Restaurant(jsonArray.getJSONObject(i)));
+            }
+            adapter.setData(arrayList);
+        }catch (JSONException e){
+            Log.e(TAG, e.getMessage());
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        switch (requestCode) {
+            case Utils.REQUEST_LOGIN:
+                if (resultCode == Activity.RESULT_OK) {
+                    invalidateOptionsMenu();
+                }
+                break;
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void requestLogin() {
+        Intent intent = new Intent(this, LoginActivity.class);
+        startActivityForResult(intent, Utils.REQUEST_LOGIN);
     }
 }

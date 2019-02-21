@@ -29,6 +29,8 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_checkout);
 
         restaurantIv = findViewById(R.id.id_name_restaurant);
@@ -77,24 +79,6 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
     //TODO hardcoded
     private ArrayList<Food> getFood(){
         ArrayList<Food> food = new ArrayList<>();
-        food.add(new Food("McMenu", 5,2));
-        food.add(new Food("McMenu", 5,2));
-        food.add(new Food("McMenu", 5,2));
-        food.add(new Food("McMenu", 5,2));
-        food.add(new Food("McMenu", 5,2));
-        food.add(new Food("McMenu", 5,2));
-        food.add(new Food("McMenu", 5,2));
-        food.add(new Food("McMenu", 5,2));
-        food.add(new Food("McMenu", 5,2));
-        food.add(new Food("McMenu", 5,2));
-        food.add(new Food("McMenu", 5,2));
-        food.add(new Food("McMenu", 5,2));
-        food.add(new Food("McMenu", 5,2));
-        food.add(new Food("McMenu", 5,2));
-        food.add(new Food("McMenu", 5,2));
-        food.add(new Food("McMenu", 5,2));
-        food.add(new Food("McMenu", 5,2));
-        food.add(new Food("McMenu", 5,2));
         food.add(new Food("McMenu", 5,2));
         food.add(new Food("McMenu", 5,2));
         food.add(new Food("McMenu", 5,2));

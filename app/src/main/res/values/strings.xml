@@ -26,4 +26,7 @@
     <string name="min_order">Min Order:</string>
     <string name="order_summary">Order Summary</string>
     <string name="pay">PAY</string>
+    <string name="profile">Profile</string>
+    <string name="PROFILE_PREFERENCES">profile_preferences</string>
+    <string name="TOKEN">token_pref</string>
 </resources>

@@ -1,10 +1,15 @@
 package com.example.depeat.datamodels;
 
+import android.widget.ImageView;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class Food {
     private String nomeFood;
     private float prezzoFood;
     private int quantity = 0;
-    private String descrizioneFood;
+    private String id;
 
     public Food(String nomeFood, float prezzoFood){
         this.nomeFood = nomeFood;
@@ -17,6 +22,12 @@ public class Food {
         this.nomeFood = nomeFood;
         this.prezzoFood = prezzoFood;
         this.quantity = quantity;
+    }
+
+    public Food(JSONObject jsonFood) throws JSONException{
+        nomeFood = jsonFood.getString("name");
+        prezzoFood = (float) jsonFood.getDouble("price");
+        id = jsonFood.getString("id");
     }
 
     public String getNomeFood() {
@@ -33,14 +44,6 @@ public class Food {
 
     public void setPrezzoFood(float prezzoFood) {
         this.prezzoFood = prezzoFood;
-    }
-
-    public String getDescrizioneFood() {
-        return descrizioneFood;
-    }
-
-    public void setDescrizioneFood(String descrizioneFood) {
-        this.descrizioneFood = descrizioneFood;
     }
 
     public int getQuantity(){

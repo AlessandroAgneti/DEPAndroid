@@ -126,7 +126,6 @@
                 android:layout_marginEnd="40dp"
                 android:background="@drawable/button"
                 android:fontFamily="sans-serif-condensed-medium"
-                android:enabled="false"
                 android:text="@string/register"
                 android:textColor="@color/colorBlack" />
 

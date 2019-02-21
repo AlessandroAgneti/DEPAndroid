@@ -1,15 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:layout_margin="4dp"
     android:elevation="16dp"
     app:cardElevation="16dp">
 
+    <ImageView
+        android:id="@+id/imageFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:src="@mipmap/ic_launcher_foreground"/>
+
     <TextView
+        android:layout_toEndOf="@id/imageFood"
         android:id="@+id/id_name_food"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -22,7 +29,9 @@
 
 
     <RelativeLayout
-        android:layout_marginTop="12dp"
+        android:layout_below="@id/id_name_food"
+        android:layout_toEndOf="@id/imageFood"
+        android:layout_marginTop="8dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal">
@@ -80,4 +89,4 @@
             android:focusable="true"
             android:src="@drawable/ic_remove_24dp" />
     </LinearLayout>
-</android.support.v7.widget.CardView>
+</RelativeLayout>

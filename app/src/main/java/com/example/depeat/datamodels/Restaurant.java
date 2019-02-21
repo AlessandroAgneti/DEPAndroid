@@ -12,6 +12,9 @@ public class Restaurant {
     private float minimoOrdine;
     private String desc_complete;
     private ArrayList<Food> foods;
+    private String id;
+
+    public static final String ENDPOINT = "restaurants/";
 
     public Restaurant(String nome, String indirizzo, float minimoOrdine){
         this.indirizzo = indirizzo;
@@ -26,6 +29,7 @@ public class Restaurant {
         indirizzo = jsonRestaurant.getString("address");
         minimoOrdine = Float.valueOf(jsonRestaurant.getString("min_order"));
         imageId = jsonRestaurant.getString("image_url");
+        id = jsonRestaurant.getString("id");
 
     }
 
@@ -75,5 +79,9 @@ public class Restaurant {
 
     public void setFoods(ArrayList<Food> foods) {
         this.foods = foods;
+    }
+
+    public String getId(){
+        return id;
     }
 }
