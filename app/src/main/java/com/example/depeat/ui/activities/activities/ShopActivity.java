@@ -1,11 +1,16 @@
-package com.example.depeat.ui.activities;
+package com.example.depeat.ui.activities.activities;
 
 import android.app.Activity;
+import android.arch.persistence.room.Database;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.AsyncTask;
+import android.os.Build;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,17 +30,24 @@ import android.widget.Toast;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.bumptech.glide.Glide;
+import com.example.depeat.DAO.OrderDao;
 import com.example.depeat.R;
 import com.example.depeat.datamodels.Food;
+import com.example.depeat.datamodels.Order;
 import com.example.depeat.datamodels.Restaurant;
+import com.example.depeat.services.AppDatabase;
 import com.example.depeat.services.RestController;
 import com.example.depeat.ui.activities.adapters.FoodAdapter;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
+import java.util.List;
 
 public class ShopActivity extends AppCompatActivity implements FoodAdapter.OnQuantityChangedListener, Response.Listener<String>, Response.ErrorListener {
 
@@ -65,6 +77,9 @@ public class ShopActivity extends AppCompatActivity implements FoodAdapter.OnQua
 
     private RestController restController;
     private String restaurantId;
+    private Order order;
+
+
     private ArrayList<Food> foods = new ArrayList<>();
 
     @Override
@@ -111,8 +126,20 @@ public class ShopActivity extends AppCompatActivity implements FoodAdapter.OnQua
 
 
         buttonCheckout.setOnClickListener(new View.OnClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.N)
             @Override
             public void onClick(View v) {
+                order = new Order();
+
+                order.setRestaurant(restaurant);
+                order.setTotal(total);
+                ArrayList<Food> selected = foodAdapter.getDataFood();
+
+                //TODO filtrare i foods con solo quelli con quantità maggiore di 0
+                selected.removeIf(foods -> foods.getQuantity() < 1);
+                order.setFoods(selected);
+
+                new InsertOrder().execute();
                 startActivity(new Intent(ShopActivity.this, CheckoutActivity.class));
             }
         });
@@ -233,5 +260,33 @@ public class ShopActivity extends AppCompatActivity implements FoodAdapter.OnQua
         } catch (JSONException e) {
             Log.e(TAG, e.getMessage());
         }
+    }
+
+    public class InsertOrder extends AsyncTask<Void, Void, Void>{
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            AppDatabase.getAppDatabase(ShopActivity.this).orderDao().insert(order);
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            startActivity(new Intent(ShopActivity.this, CheckoutActivity.class));
+            super.onPostExecute(aVoid);
+        }
+
+        /*
+        public void converterType(ArrayList<Food> foods){
+            //Per convertire un oggetto al JSON string
+            String json = new Gson().toJson(foods);
+
+            //Per convertire una JSON string in un java object
+            Type type = new TypeToken<ArrayList<Food>>(){}.getType();
+            ArrayList<Food> inplist = new Gson().fromJson(json, type);
+            for(int i = 0; i < inplist.size(); i++){
+                Order x = inplist.get(i);
+            }
+        }*/
     }
 }

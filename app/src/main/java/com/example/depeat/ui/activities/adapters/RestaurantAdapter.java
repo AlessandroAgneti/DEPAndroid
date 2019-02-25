@@ -11,13 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.depeat.R;
 import com.example.depeat.datamodels.Restaurant;
-import com.example.depeat.ui.activities.ShopActivity;
+import com.example.depeat.ui.activities.activities.ShopActivity;
 import java.util.ArrayList;
 
 

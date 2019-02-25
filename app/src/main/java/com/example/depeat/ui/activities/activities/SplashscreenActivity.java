@@ -1,4 +1,4 @@
-package com.example.depeat.ui.activities;
+package com.example.depeat.ui.activities.activities;
 
 import android.content.Intent;
 import android.os.Bundle;

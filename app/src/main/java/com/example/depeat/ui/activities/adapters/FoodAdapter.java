@@ -16,6 +16,10 @@ import java.util.ArrayList;
 
 public class FoodAdapter extends RecyclerView.Adapter {
 
+    public ArrayList<Food> getDataFood() {
+        return dataFood;
+    }
+
     private ArrayList<Food> dataFood;
     private LayoutInflater inflater;
 

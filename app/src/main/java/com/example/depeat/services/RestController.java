@@ -47,6 +47,4 @@ public class RestController {
         queue.add(request);
     }
 
-
-
 }

@@ -1,5 +1,7 @@
-package com.example.depeat.ui.activities;
+package com.example.depeat.ui.activities.activities;
 
+import android.arch.persistence.room.Database;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -8,12 +10,21 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.example.depeat.R;
 import com.example.depeat.datamodels.Food;
 import com.example.depeat.datamodels.Order;
 import com.example.depeat.datamodels.Restaurant;
+import com.example.depeat.services.AppDatabase;
 import com.example.depeat.ui.activities.adapters.OrderProductsAdapter;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 public class CheckoutActivity extends AppCompatActivity implements View.OnClickListener,OrderProductsAdapter.onItemRemovedListener{
 
@@ -39,26 +50,47 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         productRv = findViewById(R.id.recyclerview_id);
         payBtn = findViewById(R.id.button_payment);
         //Initialize datamodel object
-        order = getOrder();
-        total = order.getTotal();
 
         //setup recyclerview
         layoutManager = new LinearLayoutManager(this);
         productRv.setLayoutManager(layoutManager);
-        adapter = new OrderProductsAdapter(this, order.getFoods(), order.getRestaurant().getMinimoOrdine());
+        adapter = new OrderProductsAdapter(this, null);
         adapter.setOnItemRemovedListener(this);
         productRv.setAdapter(adapter);
 
         //Set click listener for button
         payBtn.setOnClickListener(this);
 
-        bindData();
+        new GetOrder().execute();
+
     }
 
-    private void bindData(){
+    private void bindData(Order order){
+        this.order = order;
+
+        adapter.setDataSet(order.getFoods());
+        total = order.getTotal();
         restaurantIv.setText(order.getRestaurant().getNome());
         restaurantAdress.setText(order.getRestaurant().getIndirizzo());
         totalTv.setText(String.valueOf(order.getTotal()));
+    }
+
+    public class GetOrder extends AsyncTask<Void, Void, Void>{
+
+        private List<Order> orders;
+
+        @Override
+        protected Void doInBackground(Void... voids) {
+            orders = AppDatabase.getAppDatabase(CheckoutActivity.this).orderDao().getAll();
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void aVoid) {
+            if (orders != null) {
+                bindData(orders.get(0));
+            }
+        }
     }
 
 
@@ -71,6 +103,7 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         mockOrder.setTotal(42.00f);
         return mockOrder;
     }
+
     //TODO hardcoded
     private Restaurant getRestaurant(){
         return new Restaurant("NomeRistorante", "Via Sandro Sandri", 50.00f);
@@ -88,7 +121,6 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         return food;
     }
 
-
     @Override
     public void onClick(View v) {
         //TODO manageClick
@@ -105,6 +137,32 @@ public class CheckoutActivity extends AppCompatActivity implements View.OnClickL
         total -= subtotal;
         totalTv.setText(String.valueOf(total));
     }
+
+
+    //TODO verify
+    String url = "http://138.68.86.70/orders";
+    StringRequest postRequest = new StringRequest(Request.Method.POST,
+            url,
+            new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+
+                }
+            },
+            new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+
+                }
+            }){
+        @Override
+        protected Map<String, String> getParams() throws AuthFailureError {
+
+            return super.getParams();
+        }
+    };
+
+
 
 
 }

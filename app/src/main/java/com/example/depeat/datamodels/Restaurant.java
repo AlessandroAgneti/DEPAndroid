@@ -1,17 +1,32 @@
 package com.example.depeat.datamodels;
 
+import android.arch.persistence.room.ColumnInfo;
+import android.arch.persistence.room.Ignore;
+
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 public class Restaurant {
+    @ColumnInfo(name = "image_url")
     private String imageId;
+
+    @ColumnInfo(name = "name")
     private String nome;
+
+    @ColumnInfo(name = "address")
     private String indirizzo;
+
+    @ColumnInfo(name = "minimum_order")
     private float minimoOrdine;
+
     private String desc_complete;
+
+    @Ignore
     private ArrayList<Food> foods;
+
+    @ColumnInfo(name = "restaurant_id")
     private String id;
 
     public static final String ENDPOINT = "restaurants/";
@@ -83,5 +98,9 @@ public class Restaurant {
 
     public String getId(){
         return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

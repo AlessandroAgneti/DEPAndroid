@@ -14,19 +14,18 @@ import com.example.depeat.R;
 import com.example.depeat.datamodels.Food;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class OrderProductsAdapter extends RecyclerView.Adapter<OrderProductsAdapter.OrderProductViewHolder> {
 
-    private ArrayList<Food> dataSet;
+    private List<Food> dataSet;
     private Context context;
     private LayoutInflater inflater;
-    private float miniumOrder;
 
-    public OrderProductsAdapter(Context context, ArrayList<Food> dataSet, float miniumOrder){
+    public OrderProductsAdapter(Context context, List<Food> dataSet){
         this.dataSet = dataSet;
         this.context = context;
         inflater = LayoutInflater.from(context);
-        this.miniumOrder = miniumOrder;
     }
 
     public interface onItemRemovedListener{
@@ -34,6 +33,10 @@ public class OrderProductsAdapter extends RecyclerView.Adapter<OrderProductsAdap
 
     }
 
+    public void setDataSet(List<Food> newDataSet) {
+        this.dataSet = newDataSet;
+        notifyDataSetChanged();
+    }
 
     private onItemRemovedListener onItemRemovedListener;
 
@@ -63,7 +66,10 @@ public class OrderProductsAdapter extends RecyclerView.Adapter<OrderProductsAdap
 
     @Override
     public int getItemCount() {
-        return dataSet.size();
+        if (dataSet != null) {
+            return dataSet.size();
+        }
+        return 0;
     }
 
 

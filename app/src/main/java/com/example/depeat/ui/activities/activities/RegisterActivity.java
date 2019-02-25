@@ -1,32 +1,22 @@
-package com.example.depeat.ui.activities;
+package com.example.depeat.ui.activities.activities;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.depeat.R;
-import com.example.depeat.Utils;
 import com.example.depeat.datamodels.User;
 import com.example.depeat.services.RestController;
+import com.example.depeat.ui.activities.SharedPreferencesUtils;
 
 import org.json.JSONException;
 import org.json.JSONObject;

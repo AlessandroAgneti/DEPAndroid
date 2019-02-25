@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar">
-        <activity android:name=".ui.activities.SplashscreenActivity">
+        <activity android:name=".ui.activities.activities.SplashscreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,16 +20,16 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.activities.LoginActivity"
+        <activity android:name=".ui.activities.activities.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <activity android:name=".ui.activities.CheckoutActivity"
+        <activity android:name=".ui.activities.activities.CheckoutActivity"
             android:theme="@style/AppTheme"/>
-        <activity android:name=".ui.activities.ShopActivity"
+        <activity android:name=".ui.activities.activities.ShopActivity"
             android:theme="@style/AppTheme"/>
-        <activity android:name=".ui.activities.RegisterActivity"/>
-        <activity android:name=".ui.activities.MainActivity"
+        <activity android:name=".ui.activities.activities.RegisterActivity"/>
+        <activity android:name=".ui.activities.activities.MainActivity"
             android:theme="@style/AppTheme"/>
-        <activity android:name=".ui.activities.ProfileActivity"
+        <activity android:name=".ui.activities.activities.ProfileActivity"
             android:theme="@style/AppTheme"/>
     </application>
 

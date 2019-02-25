@@ -1,4 +1,4 @@
-package com.example.depeat.ui.activities;
+package com.example.depeat.ui.activities.activities;
 
 import android.app.Activity;
 import android.content.Context;
@@ -20,24 +20,17 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.example.depeat.R;
 import com.example.depeat.Utils;
-import com.example.depeat.datamodels.Food;
 import com.example.depeat.services.RestController;
-import com.example.depeat.ui.activities.adapters.FoodAdapter;
 import com.example.depeat.ui.activities.adapters.RestaurantAdapter;
 import java.util.ArrayList;
 import com.example.depeat.datamodels.Restaurant;
 
 import org.json.JSONArray;
 import org.json.JSONException;
-import org.json.JSONObject;
 
 import static com.example.depeat.ui.activities.adapters.RestaurantAdapter.isGridMode;
 import static com.example.depeat.ui.activities.adapters.RestaurantAdapter.setGridMode;
